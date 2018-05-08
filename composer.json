@@ -1,0 +1,29 @@
+{
+    "require": {
+        "php": ">=7.0",
+        "league/container": "^2.4",
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+        "madewithlove/php-cs-fixer-config": "^1.8",
+        "phpunit/phpunit": "^7.1"
+    },
+    "autoload": {
+        "files": ["src/helpers.php"],
+        "psr-4": {
+            "PsrContainerHelpers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PsrContainerHelpers\\": "tests"
+        }
+    },
+    "scripts": {
+        "lint": "php-cs-fixer fix -vvv",
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
