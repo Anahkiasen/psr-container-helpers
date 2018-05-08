@@ -9,13 +9,21 @@ class HelpersManager
     /**
      * @var ContainerInterface
      */
-    public static $container;
+    protected static $container;
 
     /**
      * @param ContainerInterface $container
      */
-    public static function setContainer(ContainerInterface $container): void
+    public static function setContainer(ContainerInterface $container)
     {
         self::$container = $container;
+    }
+
+    /**
+     * @return ContainerInterface
+     */
+    public static function getContainer(): ContainerInterface
+    {
+        return self::$container;
     }
 }
