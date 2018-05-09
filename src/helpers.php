@@ -6,7 +6,7 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
-if (!\function_exists('container')) {
+if (!function_exists('container')) {
     /**
      * Get the available container instance.
      *
@@ -45,13 +45,14 @@ if (!function_exists('cache')) {
      *
      * If an array is passed, we'll assume you want to put to the cache.
      *
-     * @param  dynamic  key|key,default|data,expiration|null
+     * @param string|null $key
+     * @param
      *
      * @throws \Psr\Cache\InvalidArgumentException
      *
      * @return mixed
      */
-    function cache()
+    function cache(string $key = null, $value = null)
     {
         /** @var CacheItemPoolInterface $cache */
         $arguments = func_get_args();
@@ -62,7 +63,7 @@ if (!function_exists('cache')) {
                 return $cache;
 
             case 1:
-                return $cache->getItem($arguments[0]);
+                return $cache->getItem($arguments[0])->get();
 
             case 2:
             default:
